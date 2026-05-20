@@ -55,6 +55,20 @@ Cortex is a personal AI operating system for engineering work. It reduces cognit
 
 Phase 1 implementation coming soon.
 
+## Contributing
+
+Contributions are welcome! This project is licensed under GPL-3.0, which means any modifications must also be shared under the same license.
+
 ## License
 
-Private project.
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
+
+```
+Cortex - Local AI Copilot for Engineering Work
+Copyright (C) 2026  Johan Silkens
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+```
