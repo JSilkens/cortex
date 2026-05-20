@@ -2,15 +2,23 @@
   <img src="cortex.png" alt="Cortex Logo" width="200"/>
 </p>
 
-Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on NVIDIA GPU hardware.
+<h1 align="center">Cortex</h1>
 
-## What is this?
+<p align="center">
+  Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on NVIDIA GPU hardware.
+</p>
+
+---
+
+<h2 align="center">What is this?</h2>
 
 Cortex is a personal AI operating system for engineering work. It reduces cognitive load, eliminates ambiguity, and provides predictable structure for task planning, meeting analysis, and stakeholder communication.
 
 Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX card to DGX-class hardware.
 
-## Architecture
+---
+
+<h2 align="center">Architecture</h2>
 
 Hexagonal / Ports & Adapters (multi-module Maven):
 
@@ -28,7 +36,9 @@ cortex/
 
 Domain and use case modules have **zero framework dependencies** — pure Java + Lombok.
 
-## SLC Phases
+---
+
+<h2 align="center">SLC Phases</h2>
 
 | Phase | Goal | Key Addition |
 |-------|------|---------------|
@@ -38,7 +48,9 @@ Domain and use case modules have **zero framework dependencies** — pure Java +
 | 4 | Specialized agents | Planner, Meeting, Knowledge, Risk agents |
 | 5 | Full daily automation | Morning plans, auto-processing, end-of-day reflection |
 
-## Tech Stack
+---
+
+<h2 align="center">Tech Stack</h2>
 
 | Layer | Technology |
 |-------|------------|
@@ -49,13 +61,17 @@ Domain and use case modules have **zero framework dependencies** — pure Java +
 | UI | Angular (Mission Control dashboard) |
 | Architecture | Hexagonal / Ports & Adapters |
 
-## Hardware Requirements
+---
+
+<h2 align="center">Hardware Requirements</h2>
 
 - NVIDIA GPU with sufficient VRAM for local LLM inference
 - Works on: RTX 3090/4090, A100, H100, DGX Spark, or similar
 - More VRAM = larger models = better reasoning
 
-## Design Principles
+---
+
+<h2 align="center">Design Principles</h2>
 
 ### ASD-Friendly by Design
 
@@ -66,15 +82,21 @@ Domain and use case modules have **zero framework dependencies** — pure Java +
 - **Deterministic outputs** — Low temperature LLM for consistent responses
 - **No context switching tax** — One system for planning, meetings, and knowledge
 
-## Getting Started
+---
+
+<h2 align="center">Getting Started</h2>
 
 Phase 1 implementation in progress.
 
-## Contributing
+---
+
+<h2 align="center">Contributing</h2>
 
 Contributions are welcome! This project is licensed under GPL-3.0, which means any modifications must also be shared under the same license.
 
-## License
+---
+
+<h2 align="center">License</h2>
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
