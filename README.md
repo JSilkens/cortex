@@ -2,8 +2,6 @@
   <img src="cortex.png" alt="Cortex Logo" width="200"/>
 </p>
 
-<h1 align="center">Cortex</h1>
-
 <p align="center">
   Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on NVIDIA GPU hardware.
 </p>
@@ -15,26 +13,6 @@
 Cortex is a personal AI operating system for engineering work. It reduces cognitive load, eliminates ambiguity, and provides predictable structure for task planning, meeting analysis, and stakeholder communication.
 
 Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX card to DGX-class hardware.
-
----
-
-<h2 align="center">Architecture</h2>
-
-Hexagonal / Ports & Adapters (multi-module Maven):
-
-```
-cortex/
-├── cortex-domain/       → Domain models, repository interfaces (ports), validation
-├── cortex-usecase/      → Use cases (SummarizeMeeting, PlanTasks, PlanDay)
-├── cortex-api/          → REST controllers (inbound adapter)
-├── cortex-llm/          → LLM adapter (outbound) — Ollama, vLLM, NIM
-├── cortex-storage/      → File storage adapter (outbound)
-├── cortex-ui/           → Angular web dashboard (Mission Control)
-├── application/         → Spring Boot assembly
-└── pom.xml              → Parent POM
-```
-
-Domain and use case modules have **zero framework dependencies** — pure Java + Lombok.
 
 ---
 
