@@ -1,10 +1,12 @@
 # Cortex
 
-Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on DGX-class hardware.
+Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on NVIDIA GPU hardware.
 
 ## What is this?
 
 Cortex is a personal AI operating system for engineering work. It reduces cognitive load, eliminates ambiguity, and provides predictable structure for task planning, meeting analysis, and stakeholder communication.
+
+Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX card to DGX-class hardware.
 
 ## Architecture
 
@@ -15,7 +17,7 @@ Cortex is a personal AI operating system for engineering work. It reduces cognit
        ↓
 [ Orchestration / Agents ]
        ↓
-[ Local LLM (DGX) ]
+[ Local LLM (NVIDIA GPU) ]
        ↓
 [ Memory: Vector DB + File Storage ]
 ```
@@ -39,6 +41,12 @@ Cortex is a personal AI operating system for engineering work. It reduces cognit
 | Vector DB | Qdrant or Weaviate |
 | Agent framework | LangChain → custom |
 | UI | CLI first, web UI later |
+
+## Hardware Requirements
+
+- NVIDIA GPU with sufficient VRAM for local LLM inference
+- Works on: RTX 3090/4090, A100, H100, DGX Spark, or similar
+- More VRAM = larger models = better reasoning
 
 ## Design Principles
 
