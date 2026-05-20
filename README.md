@@ -2,8 +2,6 @@
   <img src="cortex.png" alt="Cortex Logo" width="200"/>
 </p>
 
-# Cortex
-
 Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on NVIDIA GPU hardware.
 
 ## What is this?
