@@ -10,23 +10,27 @@ Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX
 
 ## Architecture
 
+Hexagonal / Ports & Adapters (multi-module Maven):
+
 ```
-[ CLI / Web UI ]
-       ↓
-[ Spring Boot API ]
-       ↓
-[ Orchestration / Agents ]
-       ↓
-[ Local LLM (NVIDIA GPU) ]
-       ↓
-[ Memory: Vector DB + File Storage ]
+cortex/
+├── cortex-domain/       → Domain models, repository interfaces (ports), validation
+├── cortex-usecase/      → Use cases (SummarizeMeeting, PlanTasks, PlanDay)
+├── cortex-api/          → REST controllers (inbound adapter)
+├── cortex-llm/          → LLM adapter (outbound) — Ollama, vLLM, NIM
+├── cortex-storage/      → File storage adapter (outbound)
+├── cortex-ui/           → Angular web dashboard (Mission Control)
+├── application/         → Spring Boot assembly
+└── pom.xml              → Parent POM
 ```
+
+Domain and use case modules have **zero framework dependencies** — pure Java + Lombok.
 
 ## SLC Phases
 
 | Phase | Goal | Key Addition |
 |-------|------|---------------|
-| 1 | Usable tool in days | Summarization, task extraction, daily planning |
+| 1 | Usable tool in days | Summarization, task extraction, daily planning, Angular UI |
 | 2 | System remembers context | Vector DB, RAG, stakeholder memory |
 | 3 | Autonomous workflows | Agent layer, tool selection, orchestration |
 | 4 | Specialized agents | Planner, Meeting, Knowledge, Risk agents |
@@ -37,10 +41,11 @@ Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX
 | Layer | Technology |
 |-------|------------|
 | LLM runtime | NVIDIA stack (vLLM / Ollama / TensorRT-LLM / NIM) |
-| API | Spring Boot |
+| API | Spring Boot 3.x (Java 21+) |
 | Vector DB | Qdrant or Weaviate |
 | Agent framework | LangChain → custom |
-| UI | CLI first, web UI later |
+| UI | Angular (Mission Control dashboard) |
+| Architecture | Hexagonal / Ports & Adapters |
 
 ## Hardware Requirements
 
@@ -61,7 +66,7 @@ Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX
 
 ## Getting Started
 
-Phase 1 implementation coming soon.
+Phase 1 implementation in progress.
 
 ## Contributing
 
