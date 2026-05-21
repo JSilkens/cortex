@@ -6,6 +6,12 @@
   Privacy-first, ASD-friendly AI copilot for engineering work. Runs locally on NVIDIA GPU hardware.
 </p>
 
+<p align="center">
+
+![Build](https://github.com/JSilkens/cortex/actions/workflows/main.yml/badge.svg?branch=main)
+
+</p>
+
 ---
 
 <h2 align="center">What is this?</h2>
