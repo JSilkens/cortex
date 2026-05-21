@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16.2-alpine
+    environment:
+      POSTGRES_PASSWORD: cortex
+      POSTGRES_USER: cortex
+      POSTGRES_DB: cortex
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cortex -d cortex"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  pgdata:

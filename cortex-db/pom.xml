@@ -10,58 +10,50 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>application</artifactId>
-    <name>Cortex Application</name>
-    <description>Spring Boot application assembly — wires all adapters together</description>
+    <artifactId>cortex-db</artifactId>
+    <name>Cortex DB</name>
+    <description>PostgreSQL persistence adapter — outbound adapter implementing domain repository ports</description>
 
     <dependencies>
-        <!-- Internal modules -->
+        <!-- Compile -->
         <dependency>
             <groupId>be.jsilkens.cortex</groupId>
-            <artifactId>cortex-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.jsilkens.cortex</groupId>
-            <artifactId>cortex-llm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.jsilkens.cortex</groupId>
-            <artifactId>cortex-storage</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>be.jsilkens.cortex</groupId>
-            <artifactId>cortex-db</artifactId>
+            <artifactId>cortex-usecase</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-flyway</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
         </dependency>
 
-        <!-- Spring Boot starters -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- Lombok -->
+        <!-- Provided -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Test dependencies -->
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-flyway</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -80,20 +72,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.tngtech.archunit</groupId>
-            <artifactId>archunit-junit5</artifactId>
-            <version>${archunit.version}</version>
+            <groupId>org.instancio</groupId>
+            <artifactId>instancio-junit</artifactId>
+            <version>5.5.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
