@@ -38,6 +38,17 @@ class HexagonalArchitectureTest {
         ).should().dependOnClassesThat().resideInAnyPackage(
             "be.jsilkens.cortex.api..",
             "be.jsilkens.cortex.llm..",
+            "be.jsilkens.cortex.storage..",
+            "be.jsilkens.cortex.db.."
+        );
+
+    @ArchTest
+    static final ArchRule db_adapter_should_not_depend_on_other_adapters =
+        noClasses().that().resideInAnyPackage(
+            "be.jsilkens.cortex.db.."
+        ).should().dependOnClassesThat().resideInAnyPackage(
+            "be.jsilkens.cortex.api..",
+            "be.jsilkens.cortex.llm..",
             "be.jsilkens.cortex.storage.."
         );
 }

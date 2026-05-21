@@ -1,6 +1,18 @@
 spring:
   application:
     name: cortex
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cortex
+    username: cortex
+    password: cortex
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+  flyway:
+    locations: classpath:db/migration
 
 server:
   port: 8080
