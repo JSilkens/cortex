@@ -32,6 +32,13 @@ build/
 ### VS Code ###
 .vscode/
 
+### Node / Frontend ###
+node_modules/
+node/
+.angular/
+.cache/
+dist/
+
 ### System files ###
 .DS_Store
 Thumbs.db
