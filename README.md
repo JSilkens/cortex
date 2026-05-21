@@ -33,7 +33,7 @@ Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX
 | Layer | Technology |
 |-------|------------|
 | LLM runtime | NVIDIA stack (vLLM / Ollama / TensorRT-LLM / NIM) |
-| API | Spring Boot 3.x (Java 21+) |
+| API | Spring Boot 4.0.x (Java 21+) |
 | Vector DB | Qdrant or Weaviate |
 | Agent framework | LangChain → custom |
 | UI | Angular (Mission Control dashboard) |
