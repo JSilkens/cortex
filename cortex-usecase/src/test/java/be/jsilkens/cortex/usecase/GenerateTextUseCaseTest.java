@@ -1,5 +1,6 @@
 package be.jsilkens.cortex.usecase;
 
+import be.jsilkens.cortex.common.domain.event.DomainEventPublisher;
 import be.jsilkens.cortex.common.domain.validation.Outcome;
 import be.jsilkens.cortex.domain.LlmRequest;
 import be.jsilkens.cortex.domain.LlmResponse;
@@ -24,11 +25,14 @@ class GenerateTextUseCaseTest {
     @Mock
     private LlmPort llmPort;
 
+    @Mock
+    private DomainEventPublisher eventPublisher;
+
     private GenerateTextUseCase useCase;
 
     @BeforeEach
     void setUp() {
-        useCase = new GenerateTextUseCase(llmPort);
+        useCase = new GenerateTextUseCase(llmPort, eventPublisher);
     }
 
     @DisplayName("GIVEN valid prompt WHEN executing with defaults THEN LlmPort receives request with default model/temperature/maxTokens")
