@@ -21,7 +21,7 @@ public class SpringAiLlmAdapter implements LlmPort {
         try {
             var options = OllamaChatOptions.builder()
                     .model(request.getModel())
-                    .temperature((double) request.getTemperature())
+                    .temperature(request.getTemperature())
                     .maxTokens(request.getMaxTokens())
                     .build();
 
