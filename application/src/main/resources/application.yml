@@ -1,6 +1,8 @@
 cortex:
   llm:
     backend: mock
+  storage:
+    base-directory: data/recordings
 
 spring:
   application:
