@@ -24,7 +24,6 @@ class HexagonalArchitectureTest {
     static final ArchRule adapters_should_access_domain_through_usecase =
         noClasses().that().resideInAnyPackage(
             "be.jsilkens.cortex.api..",
-            "be.jsilkens.cortex.llm..",
             "be.jsilkens.cortex.storage.."
         ).should().dependOnClassesThat().resideInAnyPackage(
             "be.jsilkens.cortex.domain.."
@@ -49,6 +48,16 @@ class HexagonalArchitectureTest {
         ).should().dependOnClassesThat().resideInAnyPackage(
             "be.jsilkens.cortex.api..",
             "be.jsilkens.cortex.llm..",
+            "be.jsilkens.cortex.storage.."
+        );
+
+    @ArchTest
+    static final ArchRule llm_adapter_should_not_depend_on_other_adapters =
+        noClasses().that().resideInAnyPackage(
+            "be.jsilkens.cortex.llm.."
+        ).should().dependOnClassesThat().resideInAnyPackage(
+            "be.jsilkens.cortex.api..",
+            "be.jsilkens.cortex.db..",
             "be.jsilkens.cortex.storage.."
         );
 }
