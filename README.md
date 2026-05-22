@@ -39,9 +39,9 @@ Runs on any machine with a capable NVIDIA GPU — from a workstation with an RTX
 | Layer | Technology |
 |-------|------------|
 | LLM runtime | NVIDIA stack (vLLM / Ollama / TensorRT-LLM / NIM) |
+| LLM integration | Spring AI 2.0 ([ADR-0001](docs/adr/0001-spring-ai-for-llm-integration.md)) |
 | API | Spring Boot 4.0.x (Java 21+) |
 | Vector DB | Qdrant or Weaviate |
-| Agent framework | LangChain → custom |
 | UI | Angular (Mission Control dashboard) |
 | Architecture | Hexagonal / Ports & Adapters |
 
