@@ -38,6 +38,7 @@ node/
 .angular/
 .cache/
 dist/
+cortex-ui/src/angular/src/app/api/
 
 ### System files ###
 .DS_Store
