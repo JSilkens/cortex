@@ -1,0 +1,327 @@
+openapi: "3.1.0"
+info:
+  title: Cortex API
+  version: 0.0.1-SNAPSHOT
+  description: Privacy-first AI copilot REST API for task planning, meeting analysis, and system management.
+
+tags:
+  - name: Meetings
+    description: Meeting transcript analysis and summarization
+  - name: Tasks
+    description: Task planning and breakdown
+  - name: Planner
+    description: Day planning and time blocking
+  - name: System
+    description: System status and configuration
+
+paths:
+  /meeting-summary:
+    post:
+      tags:
+        - Meetings
+      operationId: createMeetingSummary
+      summary: Summarize a meeting transcript
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeetingSummaryRequest'
+      responses:
+        '201':
+          description: Meeting summary created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingSummaryResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /plan-tasks:
+    post:
+      tags:
+        - Tasks
+      operationId: planTasks
+      summary: Break down a description into actionable tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanTasksRequest'
+      responses:
+        '201':
+          description: Tasks planned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanTasksResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /plan-day:
+    post:
+      tags:
+        - Planner
+      operationId: planDay
+      summary: Create a time-blocked schedule for the day
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanDayRequest'
+      responses:
+        '201':
+          description: Day plan created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanDayResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /status:
+    get:
+      tags:
+        - System
+      operationId: getStatus
+      summary: Get system status
+      responses:
+        '200':
+          description: System status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /settings:
+    get:
+      tags:
+        - System
+      operationId: getSettings
+      summary: Get current settings
+      responses:
+        '200':
+          description: Settings retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      tags:
+        - System
+      operationId: updateSettings
+      summary: Update settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSettingsRequest'
+      responses:
+        '200':
+          description: Settings updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+components:
+  schemas:
+    MeetingSummaryRequest:
+      type: object
+      required:
+        - transcript
+      properties:
+        transcript:
+          type: string
+          maxLength: 100000
+
+    MeetingSummaryResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        summary:
+          type: string
+        actionItems:
+          type: array
+          items:
+            type: string
+        decisions:
+          type: array
+          items:
+            type: string
+
+    PlanTasksRequest:
+      type: object
+      required:
+        - description
+      properties:
+        description:
+          type: string
+          maxLength: 10000
+
+    PlanTasksResponse:
+      type: object
+      properties:
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskItem'
+
+    TaskItem:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        priority:
+          type: string
+        status:
+          type: string
+
+    PlanDayRequest:
+      type: object
+      required:
+        - tasks
+        - calendar
+      properties:
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskItem'
+        calendar:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalendarEntry'
+
+    CalendarEntry:
+      type: object
+      properties:
+        title:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+
+    PlanDayResponse:
+      type: object
+      properties:
+        schedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeBlock'
+
+    TimeBlock:
+      type: object
+      properties:
+        task:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+
+    StatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        version:
+          type: string
+        uptime:
+          type: string
+
+    SettingsResponse:
+      type: object
+      properties:
+        llmModel:
+          type: string
+        temperature:
+          type: number
+        maxTokens:
+          type: integer
+        isDefault:
+          type: boolean
+
+    UpdateSettingsRequest:
+      type: object
+      properties:
+        llmModel:
+          type: string
+        temperature:
+          type: number
+        maxTokens:
+          type: integer
+
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
